@@ -105,7 +105,7 @@ class S3Downloader:
         try:
             cmd = self._build_aws_list_command(s3_prefix)
             result = subprocess.run(
-                cmd, capture_output=True, text=True, timeout=60, check=False
+                cmd, capture_output=True, text=True, timeout=1800, check=False
             )
 
             if result.returncode != 0:
