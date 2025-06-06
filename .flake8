@@ -1,0 +1,43 @@
+[flake8]
+max-line-length = 120
+max-complexity = 10
+exclude = 
+    .git,
+    __pycache__,
+    .venv,
+    venv,
+    env,
+    .env,
+    build,
+    dist,
+    *.egg-info
+
+# Error codes to ignore
+ignore = 
+    E203,
+    W503,
+    W504,
+    W718,
+    W719,
+    C116
+
+# Enable specific checks
+select = 
+    E,     # pycodestyle errors
+    W,     # pycodestyle warnings
+    F,     # pyflakes
+    C,     # complexity
+    B,     # flake8-bugbear
+    I      # isort
+
+# Show source code for each error
+show-source = True
+
+# Count errors and warnings
+count = True
+
+# Show statistics
+statistics = True
+
+# Format for error messages
+format = %(path)s:%(row)d:%(col)d: %(code)s %(text)s 
