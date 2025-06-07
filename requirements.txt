@@ -1,0 +1,25 @@
+# S3 Concurrent Operations - Runtime Dependencies
+# 
+# Analysis of s3_concurrent_uploader.py and s3_concurrent_downloader.py:
+# 
+# Both scripts use ONLY Python standard library modules:
+# - argparse (command-line argument parsing)
+# - subprocess (running AWS CLI commands) 
+# - sys (system-specific parameters and functions)
+# - threading (thread-based parallelism)
+# - time (time-related functions)
+# - concurrent.futures (high-level interface for asynchronously executing callables)
+# - pathlib (object-oriented filesystem paths)
+# - glob (Unix shell-style pathname pattern expansion) - uploader only
+# - os (operating system interface) - uploader only  
+# - fnmatch (Unix filename pattern matching) - downloader only, imported conditionally
+#
+# EXTERNAL SYSTEM REQUIREMENTS:
+# - AWS CLI must be installed and configured on the system
+# - Python 3.6+ (uses concurrent.futures and pathlib)
+#
+# NO PYTHON PACKAGES NEED TO BE INSTALLED FOR RUNTIME
+# All imports are from Python standard library
+
+# Uncomment below only if you need to ensure setuptools for building/packaging:
+# setuptools>=45

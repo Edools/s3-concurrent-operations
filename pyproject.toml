@@ -27,21 +27,9 @@ classifiers = [
 ]
 dynamic = ["version"]
 
-[project.optional-dependencies]
-dev = [
-    "black>=22.0.0",
-    "isort>=5.10.0",
-    "flake8>=4.0.0",
-    "flake8-bugbear>=22.0.0",
-    "flake8-docstrings>=1.6.0",
-    "flake8-import-order>=0.18.1",
-    "mypy>=0.950",
-    "pytest>=7.0.0",
-    "pytest-cov>=3.0.0",
-]
-
 [project.scripts]
 s3-upload = "s3_concurrent_uploader:main"
+s3-download = "s3_concurrent_downloader:main"
 
 # Black configuration
 [tool.black]

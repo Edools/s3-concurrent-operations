@@ -1,4 +1,4 @@
-.PHONY: help lint format check test clean install-dev fix-whitespace
+.PHONY: help lint format check clean install-dev install update-pip
 
 help:
 	@echo "Available commands:"
@@ -6,14 +6,18 @@ help:
 	@echo "  lint          Run all linting checks"
 	@echo "  format        Format code with black and isort"
 	@echo "  check         Run linting without making changes"
-	@echo "  fix-whitespace Remove trailing whitespace"
-	@echo "  test          Run tests"
 	@echo "  clean         Clean up temporary files"
 
-install-dev:
-	pip install -e ".[dev]"
+update-pip:
+	python -m pip install --upgrade pip
 
-lint: fix-whitespace format check
+install-dev:
+	python -m pip install -r requirements-dev.txt
+
+install:
+	python -m pip install -r requirements.txt
+
+lint: format check
 
 format:
 	@echo "Formatting code with black..."
@@ -26,13 +30,6 @@ check:
 	flake8 .
 	@echo "Type checking with mypy..."
 	mypy . --ignore-missing-imports
-
-fix-whitespace:
-	@echo "Removing trailing whitespace..."
-	find . -name "*.py" -type f -exec sed -i 's/[[:space:]]*$$//' {} \;
-
-test:
-	pytest
 
 clean:
 	@echo "Cleaning up temporary files..."
