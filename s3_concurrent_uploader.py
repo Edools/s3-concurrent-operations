@@ -67,6 +67,7 @@ class S3Uploader:
     def _build_aws_command(self, local_file, s3_key):
         """Build AWS CLI command for file upload"""
         cmd = ["aws", "s3", "cp", local_file, f"s3://{self.bucket_name}/{s3_key}"]
+        cmd.extend(["--use-accelerate-endpoint"])
 
         if self.aws_profile:
             cmd.extend(["--profile", self.aws_profile])
